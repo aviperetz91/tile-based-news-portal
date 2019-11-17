@@ -50,9 +50,7 @@ const getFinanceAndEmit = socket => {
     axios.get('https://api.exchangeratesapi.io/latest?base=ILS')
         .then(response => {
             const key = Object.keys(response.data);
-            // const obj = response.data[key[0]];
             const obj = response.data[key[0]];
-            // console.log(obj);
             socket.emit("getFinance", obj)
         }) 
         .catch(err => console.log(err));
@@ -82,10 +80,10 @@ const getSportsAndEmit = socket => {
 // The callback will be execute after every connection event
 io.on("connection", socket => {
     console.log("New client connected");
-    setInterval(() => getNewsAndEmit(socket), 3000);
-    setInterval(() => getWeatherAndEmit(socket), 10000); 
-    setInterval(() => getFinanceAndEmit(socket), 5000);
-    setInterval(() => getSportsAndEmit(socket), 2000);
+    setInterval(() => getNewsAndEmit(socket), 1000);
+    setInterval(() => getWeatherAndEmit(socket), 100000); 
+    setInterval(() => getFinanceAndEmit(socket), 2000);
+    setInterval(() => getSportsAndEmit(socket), 3000);
     socket.on("disconnect", () => {
         console.log("Client disconnected");
     });
