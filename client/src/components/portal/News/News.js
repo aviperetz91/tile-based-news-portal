@@ -9,23 +9,34 @@ class News extends Component {
 
         let display =
             <div style={{textAlign: 'center'}}> 
-                <Spinner style={{textAlign: 'center'}} animation="border" variant="secondary" /> 
+                <Spinner animation="border" variant="secondary" /> 
             </div>
 
         if(newsObj) {
             display = 
-                <Card.Text>
-                    { newsObj.articles[0].description }
-                </Card.Text>
+                <div>
+                    <div>
+                        { newsObj.articles[0].description }
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                        <div>
+
+                        </div>
+                        <div>
+                            { newsObj.articles[0].source.name }
+                        </div>
+                        
+                    </div>
+                </div>
         }
 
         return(
-            <Card>
+            <Card style={{ height: 250 }}>
                 <Card.Body>
                     <Card.Title>News update</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">Breaking news!</Card.Subtitle>
                     { display }
-                    <Card.Link href="#">Show me the full article</Card.Link>
+                    {/* <Card.Link href="#">Show me the full article</Card.Link> */}
                 </Card.Body>
             </Card>
         )

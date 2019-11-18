@@ -15,21 +15,21 @@ class Weather extends Component {
         const weatherObj = this.props.weatherObj;
 
         let display = 
-            <div style={{textAlign: 'center'}}>
-                <Spinner style={{textAlign: 'center'}} animation="border" variant="secondary" />
+            <div style={{ textAlign: 'center', verticalAlign: 'center' }}> 
+                <Spinner animation="border" variant="secondary" />
             </div>
 
         if(weatherObj) {
             display = 
-                <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
                     <div>
-                        <h4> { weatherObj.currently.temperature } °F </h4>
-                        <h4> { weatherObj.timezone } </h4>
+                        <h2> { weatherObj.currently.temperature } °F </h2>
+                        <h2> { weatherObj.timezone } </h2>
                     </div>
                     <div>
                         <Skycons 
                             color='black' 
-                            height="100"
+                            height='100'
                             icon={ this.setIcons() }
                             autoplay={true}
                         />
@@ -38,8 +38,8 @@ class Weather extends Component {
         }
         
         return(
-            <Card>
-                <Card.Body>
+            <Card style={{ height: 250 }}>
+                <Card.Body >
                     <Card.Title>Weather</Card.Title>
                     { display }
                 </Card.Body>

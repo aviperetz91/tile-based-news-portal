@@ -6,6 +6,8 @@ import * as portalActions from './store/actions/portalActions';
 
 import News from './components/portal/News/News';
 import Weather from './components/portal/Weather/Weather';
+import Sports from './components/portal/Sports/Sports';
+import Finance from './components/portal/Finance/Finance';
 
 
 class App extends Component {  
@@ -26,9 +28,10 @@ class App extends Component {
             <Col sm={4}> <News /> </Col>
             <Col sm={8}> <Weather /> </Col>
           </Row>
+          <br/>
           <Row>
-            <Col><h2>Finance</h2></Col>
-            <Col><h2>Sports</h2></Col>
+            <Col> <Finance /> </Col>
+            <Col> <Sports /> </Col>
             <Col><h2>Subscribe for updates</h2></Col>
           </Row>
         </Container>
