@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
+import { Jumbotron, Container, Row, Col } from 'react-bootstrap';
 
 import * as portalActions from './store/actions/portalActions';
-import Test from './containers/Test/Test';
+
+import News from './components/portal/News/News';
+import Weather from './components/portal/Weather/Weather';
+
 
 class App extends Component {  
 
@@ -16,10 +20,20 @@ class App extends Component {
   render() {
 
     return (
-      <div>
-        <div>HOME PAGE!</div>
-        <Test />
-      </div>
+      <Jumbotron>
+        <Container>
+          <Row>
+            <Col sm={4}> <News /> </Col>
+            <Col sm={8}> <Weather /> </Col>
+          </Row>
+          <Row>
+            <Col><h2>Finance</h2></Col>
+            <Col><h2>Sports</h2></Col>
+            <Col><h2>Subscribe for updates</h2></Col>
+          </Row>
+        </Container>
+      </Jumbotron>
+      
     );
   }
 }
