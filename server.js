@@ -6,9 +6,9 @@ const socketIo = require('socket.io');
 // const cors = require('cors');
 
 // Import index route
-const index = require('./routes/index');
+const index = require('./routes');
 
-const { getNewsAndEmit, getWeatherAndEmit, getFinanceAndEmit, getSportsAndEmit } = require('./controllers/index');
+const { getNewsAndEmit, getWeatherAndEmit, getFinanceAndEmit, getSportsAndEmit } = require('./controllers');
 
 // Use route
 app.use(index);

@@ -47,7 +47,7 @@ class Finance extends Component {
         }
 
         return(
-            <Card style={{ height: 250 }}>
+            <Card>
                 <Card.Body>
                     <Card.Title>Finance</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">Exchange rates (based USD):</Card.Subtitle>

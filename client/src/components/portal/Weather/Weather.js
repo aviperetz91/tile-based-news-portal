@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Spinner, Card } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import Skycons from 'react-skycons';
@@ -21,24 +21,29 @@ class Weather extends Component {
 
         if(weatherObj) {
             display = 
-                <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
-                    <div>
-                        <h2> { weatherObj.currently.temperature } °F </h2>
-                        <h2> { weatherObj.timezone } </h2>
+                <Fragment>
+                    <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
+                        <div>
+                            <h2> { weatherObj.currently.temperature } °F </h2>
+                            <h3> { weatherObj.timezone } </h3>
+                        </div>
+                        <div>
+                            <Skycons 
+                                color='black' 
+                                height='120'
+                                icon={ this.setIcons() }
+                                autoplay={true}
+                            />
+                        </div>
                     </div>
                     <div>
-                        <Skycons 
-                            color='black' 
-                            height='120'
-                            icon={ this.setIcons() }
-                            autoplay={true}
-                        />
+                        { weatherObj.hourly.summary }
                     </div>
-                </div>
+                </Fragment>
         }
         
         return(
-            <Card style={{ height: 250 }}>
+            <Card>
                 <Card.Body >
                     <Card.Title>Weather</Card.Title>
                     { display }

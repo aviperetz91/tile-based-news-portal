@@ -3,7 +3,7 @@ const axios = require('axios');
 
 exports.getNewsAndEmit = function(socket) {
     // Getting the data from API
-    axios.get(`https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=101f055f18a2438ebee29d7537fff31d`)
+    axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${process.env.NEWSAPI_SECRET_KEY}`)
         .then(response => socket.emit("getNews", response.data)) // Emitting a new message. It will be consumed by the client
         .catch(err => console.log(err));
 };

@@ -36,8 +36,8 @@ class App extends Component {
         <Jumbotron>
             <Container>
                 <Row>
-                    <Col sm={4}> <News /> </Col>
-                    <Col sm={8}> <Weather /> </Col>
+                    <Col md={4}> <News /> </Col>
+                    <Col md={8}> <Weather /> </Col>
                 </Row>
                 <br/>
                 <Row>

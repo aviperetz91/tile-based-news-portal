@@ -37,7 +37,7 @@ class News extends Component {
                 </div>
                 <br/>
                 <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-end' }}> 
-                    <Card.Subtitle className="mb-2 text-muted">
+                    <Card.Subtitle className="mb-2 text-muted" style={{fontStyle: 'italic'}}>
                     Author: { newsObj.articles[0].author ? 
                             newsObj.articles[0].author
                         : ' Prefers to remain anonymous' }
@@ -61,7 +61,7 @@ class News extends Component {
 
         return(
             <Fragment>
-                <Card style={{ height: 250 }} onClick={ this.showModalHandler }>
+                <Card onClick={ this.showModalHandler }>
                     <Card.Body>
                         <Card.Title>News update</Card.Title>
                         { display }
