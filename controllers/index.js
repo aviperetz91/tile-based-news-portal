@@ -3,7 +3,7 @@ const axios = require('axios');
 
 exports.getNewsAndEmit = function(socket) {
     // Getting the data from API
-    axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${process.env.NEWSAPI_SECRET_KEY}`)
+    axios.get(`https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=101f055f18a2438ebee29d7537fff31d`)
         .then(response => socket.emit("getNews", response.data)) // Emitting a new message. It will be consumed by the client
         .catch(err => console.log(err));
 };
@@ -18,9 +18,7 @@ exports.getWeatherAndEmit = function(socket) {
 exports.getFinanceAndEmit = function(socket) {
     // Getting the data from API
     axios.get('https://www.freeforexapi.com/api/live?pairs=USDEUR,USDCAD,USDGBP,USDAUD,USDCHF,USDNZD,USDILS')
-        .then(response => {
-            socket.emit("getFinance", response.data.rates) // Emitting a new message. It will be consumed by the client
-        }) 
+        .then(response => socket.emit("getFinance", response.data.rates)) // Emitting a new message. It will be consumed by the client
         .catch(err => console.log(err));
 };
 

@@ -30,9 +30,9 @@ const io = socketIo(server);
 io.on("connection", socket => {
     console.log("New client connected");
     setTimeout(() => getNewsAndEmit(socket), 1000);
-    setTimeout(() => getWeatherAndEmit(socket), 1000); 
-    setTimeout(() => getFinanceAndEmit(socket), 1000);
-    setTimeout(() => getSportsAndEmit(socket), 1000);
+    setTimeout(() => getWeatherAndEmit(socket), 2000); 
+    setTimeout(() => getFinanceAndEmit(socket), 3000);
+    setTimeout(() => getSportsAndEmit(socket), 4000);
     socket.on("disconnect", () => {
         console.log("Client disconnected");
     });
