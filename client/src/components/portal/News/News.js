@@ -25,7 +25,6 @@ class News extends Component {
                         <div>
                             { newsObj.articles[0].source.name }
                         </div>
-                        
                     </div>
                 </div>
         }

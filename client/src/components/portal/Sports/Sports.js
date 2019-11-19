@@ -63,6 +63,7 @@ class Sports extends Component {
             <Card style={{ height: 250 }}>
                 <Card.Body>
                     <Card.Title>Sports</Card.Title>
+                    <Card.Subtitle className="mb-2 text-muted">NBA Latest Games:</Card.Subtitle>
                     { display }
                 </Card.Body>
             </Card>

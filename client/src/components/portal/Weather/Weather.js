@@ -15,7 +15,7 @@ class Weather extends Component {
         const weatherObj = this.props.weatherObj;
 
         let display = 
-            <div style={{ textAlign: 'center', verticalAlign: 'center' }}> 
+            <div style={{ textAlign: 'center'}}> 
                 <Spinner animation="border" variant="secondary" />
             </div>
 
@@ -29,7 +29,7 @@ class Weather extends Component {
                     <div>
                         <Skycons 
                             color='black' 
-                            height='100'
+                            height='120'
                             icon={ this.setIcons() }
                             autoplay={true}
                         />
