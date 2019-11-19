@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { Spinner, Card, Container, Row, Col, Image } from 'react-bootstrap';
 import { Spinner, Card } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
@@ -8,14 +7,14 @@ class Sports extends Component {
     render() {
         const sportsObj = this.props.sportsObj;
 
-        let display =
+        let content =
             <div style={{textAlign: 'center'}}> 
                 <Spinner animation="border" variant="secondary" /> 
             </div>
 
         if(sportsObj) {
-            display = 
-                <div style={{ display: 'flex', justifyContent: 'space-between', textAlign: 'center' }}>
+            content = 
+                <div style={{ display: 'flex', justifyContent: 'space-between', textAlign: 'center', paddingBottom: 8 }}>
                     <div> 
                         <img 
                             style={{ backgroundColor: '#e4e4e4', borderRadius: 30, borderColor: 'black', borderWidth: 2 }}
@@ -23,11 +22,11 @@ class Sports extends Component {
                             alt='logo'
                             width='60' 
                         />
-                        <p style={{ marginBottom: 0 }}>{ sportsObj.home_team.city }</p>
-                        <p>{ sportsObj.home_team.name }</p>
-                        <h5 style={{ fontWeight: 'bold' }}>{ sportsObj.home_team_score }</h5>
+                        <p style={{ marginBottom: 0, fontWeight: '500' }}>{ sportsObj.home_team.city }</p>
+                        <p style={{ fontWeight: '500' }} >{ sportsObj.home_team.name }</p>
+                        <h4 style={{ color: '#565656' }}>{ sportsObj.home_team_score }</h4>
                     </div>
-                    <div style={{ display: 'flex', alignItems: 'center' }}> <h4>VS</h4> </div>
+                    <div style={{ display: 'flex', alignItems: 'center' }}> <h4 style={{ color: '#565656' }}>VS</h4> </div>
                     <div> 
                         <img 
                             style={{ backgroundColor: '#e4e4e4', borderRadius: 30, borderColor: 'black', borderWidth: 2 }}
@@ -35,9 +34,9 @@ class Sports extends Component {
                             alt='logo'
                             width='60' 
                         />
-                        <p style={{ marginBottom: 0 }}>{ sportsObj.visitor_team.city }</p>
-                        <p>{ sportsObj.visitor_team.name }</p>
-                        <h5 style={{ fontWeight: 'bold' }}>{ sportsObj.visitor_team_score }</h5>
+                        <p style={{ marginBottom: 0, fontWeight: '500' }}>{ sportsObj.visitor_team.city }</p>
+                        <p style={{ fontWeight: '500' }}>{ sportsObj.visitor_team.name }</p>
+                        <h4 style={{ color: '#565656' }}>{ sportsObj.visitor_team_score }</h4>
                     </div>
                 </div>
         }
@@ -46,8 +45,10 @@ class Sports extends Component {
             <Card>
                 <Card.Body>
                     <Card.Title>Sports</Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">NBA Latest Games:</Card.Subtitle>
-                    { display }
+                    <Card.Subtitle className="mb-2 text-muted" style={{ paddingBottom: 12 }}
+                        >NBA Latest Games:
+                    </Card.Subtitle>
+                    { content }
                 </Card.Body>
             </Card>
         )

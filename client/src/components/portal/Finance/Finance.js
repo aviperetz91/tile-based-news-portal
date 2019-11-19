@@ -7,39 +7,39 @@ class Finance extends Component {
     render() {
         const financeObj = this.props.financeObj;
 
-        let display =
+        let content =
             <div style={{textAlign: 'center'}}> 
                 <Spinner animation="border" variant="secondary" /> 
             </div>
 
         if(financeObj) {
-            display = 
+            content = 
                 <div>
-                    <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+                    <div style={{ fontWeight: '500', display: 'flex', justifyContent: 'space-around', backgroundColor: '#e4e4e4', borderRadius: 10 }}>
                         <div> EUR: </div>
                         <div> { financeObj.USDEUR.rate } </div>
                     </div>
-                    <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+                    <div style={{ fontWeight: '500', display: 'flex', justifyContent: 'space-around' }}>
                         <div> CAD: </div>
                         <div> { financeObj.USDCAD.rate } </div>
                     </div>
-                    <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+                    <div style={{ fontWeight: '500', display: 'flex', justifyContent: 'space-around', backgroundColor: '#e4e4e4', borderRadius: 10 }}>
                         <div> GBP: </div>
                         <div> { financeObj.USDGBP.rate } </div>
                     </div>
-                    <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+                    <div style={{ fontWeight: '500', display: 'flex', justifyContent: 'space-around' }}>
                         <div> AUD: </div>
                         <div> { financeObj.USDAUD.rate } </div>
                     </div>
-                    <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+                    <div style={{ fontWeight: '500', display: 'flex', justifyContent: 'space-around', backgroundColor: '#e4e4e4', borderRadius: 10 }}>
                         <div> CHF: </div>
                         <div> { financeObj.USDCHF.rate } </div>
                     </div>
-                    <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+                    <div style={{ fontWeight: '500', display: 'flex', justifyContent: 'space-around' }}>
                         <div> NZD: </div>
                         <div> { financeObj.USDNZD.rate } </div>
                     </div>
-                    <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+                    <div style={{ fontWeight: '500', display: 'flex', justifyContent: 'space-around', backgroundColor: '#e4e4e4', borderRadius: 10 }}>
                         <div> ILS: </div>
                         <div> { financeObj.USDILS.rate } </div>
                     </div>
@@ -50,8 +50,10 @@ class Finance extends Component {
             <Card>
                 <Card.Body>
                     <Card.Title>Finance</Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">Exchange rates (based USD):</Card.Subtitle>
-                    { display }
+                    <Card.Subtitle className="mb-2 text-muted" style={{ paddingBottom: 12 }}>
+                        Exchange rates based USD:
+                    </Card.Subtitle>
+                    { content }
                 </Card.Body>
             </Card>
         )

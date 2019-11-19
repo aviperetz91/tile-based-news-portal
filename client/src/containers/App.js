@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import { Jumbotron, Container, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 
-import * as portalActions from './store/actions/portalActions';
+import * as portalActions from '../store/actions/portalActions';
 
-import News from './components/portal/News/News';
-import Weather from './components/portal/Weather/Weather';
-import Sports from './components/portal/Sports/Sports';
-import Finance from './components/portal/Finance/Finance';
+import News from '../components/portal/News/News';
+import Weather from '../components/portal/Weather/Weather';
+import Sports from '../components/portal/Sports/Sports';
+import Finance from '../components/portal/Finance/Finance';
 
 
 class App extends Component {  
@@ -33,7 +33,7 @@ class App extends Component {
   render() {
 
     return (
-        <Jumbotron>
+        <Jumbotron style={{ backgroundColor: '#f4f4f4' }}>
             <Container>
                 <Row>
                     <Col md={4}> <News /> </Col>

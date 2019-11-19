@@ -3,22 +3,15 @@ const express = require("express");
 const app = express();
 const http = require('http');
 const socketIo = require('socket.io');
-// const cors = require('cors');
+
+// Import functions from controller
+const { getNewsAndEmit, getWeatherAndEmit, getFinanceAndEmit, getSportsAndEmit } = require('./controllers');
 
 // Import index route
 const index = require('./routes');
 
-const { getNewsAndEmit, getWeatherAndEmit, getFinanceAndEmit, getSportsAndEmit } = require('./controllers');
-
 // Use route
 app.use(index);
-
-// app.use(cors());
-// app.use((req,res,next)=>{
-//     res.setHeader('Access-Control-Allow-Origin', '*');
-//     res.setHeader('Access-Control-Allow-Methods','*')
-//         next()
-// })
 
 // Server instance
 const server = http.createServer(app);
