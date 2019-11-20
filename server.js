@@ -18,8 +18,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 // Allow only origin http://localhost:3000 access the server
-var corsOptions = {
-    origin: 'http://localhost:3000',
+const corsOptions = {
+    origin: '*',
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 app.use(cors(corsOptions));
@@ -36,10 +36,14 @@ const io = socketIo(server);
 // The callback will be execute after every connection event
 io.on("connection", socket => {
     console.log("New client connected");
-    setTimeout(() => getNewsAndEmit(socket), 1000);
-    setTimeout(() => getWeatherAndEmit(socket), 2000); 
-    setTimeout(() => getFinanceAndEmit(socket), 3000);
-    setTimeout(() => getSportsAndEmit(socket), 4000);
+    getNewsAndEmit(socket);
+    getWeatherAndEmit(socket);
+    getFinanceAndEmit(socket);
+    getSportsAndEmit(socket);
+    // setTimeout(() => getNewsAndEmit(socket), 1000);
+    // setTimeout(() => getWeatherAndEmit(socket), 2000); 
+    // setTimeout(() => getFinanceAndEmit(socket), 3000);
+    // setTimeout(() => getSportsAndEmit(socket), 4000);
     socket.on("disconnect", () => {
         console.log("Client disconnected");
     });

@@ -16,13 +16,6 @@ class Subscribe extends Component {
         .catch(err => console.log(err))
     }
 
-    check = (event) => {
-        event.preventDefault();
-        axios.get('http://localhost:4000/api')
-        .then(response => console.log(response.data))
-        .catch(err => console.log(err))
-    }
-
     render() {
         return (
             <Card onClick={ this.showModalHandler }>
@@ -46,13 +39,6 @@ class Subscribe extends Component {
                             onClick={ this.submitHandler }
                         >
                             Submit
-                        </Button>
-                        <Button 
-                            variant="primary" 
-                            type="submit"
-                            onClick={ this.check }
-                        >
-                            Check
                         </Button>
                     </Form>
                 </Card.Body>
