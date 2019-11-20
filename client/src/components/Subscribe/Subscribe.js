@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
 import { Form, Button, Card } from 'react-bootstrap';
+import axios from 'axios';
+
 
 class Subscribe extends Component {
 
     state = {
         userInput: ''
+    }
+
+    componentDidMount() {
+        axios.get('http://localhost:4000/api')
+        .then(response => console.log(response.data))
+        .catch(err => console.log(err))
     }
 
     render() {
@@ -27,7 +35,7 @@ class Subscribe extends Component {
                         <Button 
                             variant="success" 
                             type="submit"
-                            onClick={() => {}}
+                            onClick={ () => console.log('SUBMIT') }
                         >
                             Submit
                         </Button>

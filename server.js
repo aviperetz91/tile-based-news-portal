@@ -3,6 +3,7 @@ const express = require("express");
 const http = require('http');
 const socketIo = require('socket.io');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 // Import index route
 const index = require('./routes');
@@ -16,9 +17,16 @@ const app = express();
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
+// Allow only origin http://localhost:3000 access the server
+var corsOptions = {
+    origin: 'http://localhost:3000',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+app.use(cors(corsOptions));
+
 // Use route
 app.use('/api', index);
-
+    
 // Server instance
 const server = http.createServer(app);
 
@@ -40,5 +48,6 @@ io.on("connection", socket => {
 const port = process.env.PORT || 4000;
 
 server.listen(port, () => console.log(`Server running on port ${port}`));
+// app.listen(5000, console.log('SECOND PORT'));
 
 
