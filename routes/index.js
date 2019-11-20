@@ -9,7 +9,7 @@ const validateEmail = require('../validation/email');
 // @desc    Test route
 // @access  Public
 router.get('/', (req, res) => {
-    return res.json({ response: `WORK` });
+    return res.json({ response: ` '/' WORK ` });
 })
 
 // @route   GET api/subscribe
@@ -23,7 +23,7 @@ router.post('/subscribe', (req, res) => {
         return res.status(400).json(errors);
     }
 
-    console.log(req.body);
+    return res.json({ response: req.body.email });
 })
 
 module.exports = router;

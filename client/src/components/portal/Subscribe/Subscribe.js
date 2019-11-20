@@ -6,10 +6,18 @@ import axios from 'axios';
 class Subscribe extends Component {
 
     state = {
-        userInput: ''
+        email: ''
     }
 
-    componentDidMount() {
+    submitHandler = (event) => {
+        event.preventDefault();
+        axios.post('http://localhost:4000/api/subscribe',{ email:this.state.email })
+        .then(response => console.log(response.data))
+        .catch(err => console.log(err))
+    }
+
+    check = (event) => {
+        event.preventDefault();
         axios.get('http://localhost:4000/api')
         .then(response => console.log(response.data))
         .catch(err => console.log(err))
@@ -26,7 +34,7 @@ class Subscribe extends Component {
                             <Form.Control 
                                 type="email" 
                                 placeholder="Enter email" 
-                                onChange={(event) => this.setState({ userInput: event.target.value })}
+                                onChange={(event) => this.setState({ email: event.target.value })}
                             />
                             <Form.Text className="text-muted">
                             Please enter a valid email address (e.g. - username@gmail.com).
@@ -35,9 +43,16 @@ class Subscribe extends Component {
                         <Button 
                             variant="success" 
                             type="submit"
-                            onClick={ () => console.log('SUBMIT') }
+                            onClick={ this.submitHandler }
                         >
                             Submit
+                        </Button>
+                        <Button 
+                            variant="primary" 
+                            type="submit"
+                            onClick={ this.check }
+                        >
+                            Check
                         </Button>
                     </Form>
                 </Card.Body>

@@ -48,6 +48,5 @@ io.on("connection", socket => {
 const port = process.env.PORT || 4000;
 
 server.listen(port, () => console.log(`Server running on port ${port}`));
-// app.listen(5000, console.log('SECOND PORT'));
 
 

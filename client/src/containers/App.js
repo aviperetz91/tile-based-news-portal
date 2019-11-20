@@ -8,7 +8,7 @@ import News from '../components/portal/News/News';
 import Weather from '../components/portal/Weather/Weather';
 import Sports from '../components/portal/Sports/Sports';
 import Finance from '../components/portal/Finance/Finance';
-import Subscribe from '../components/Subscribe/Subscribe';
+import Subscribe from '../components/portal/Subscribe/Subscribe';
 
 
 class App extends Component {  
