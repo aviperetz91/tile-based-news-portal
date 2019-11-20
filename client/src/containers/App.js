@@ -9,6 +9,7 @@ import News from '../components/portal/News/News';
 import Weather from '../components/portal/Weather/Weather';
 import Sports from '../components/portal/Sports/Sports';
 import Finance from '../components/portal/Finance/Finance';
+import Subscribe from '../components/Subscribe/Subscribe';
 
 
 class App extends Component {  
@@ -43,7 +44,7 @@ class App extends Component {
                 <Row>
                     <Col> <Finance /> </Col>
                     <Col> <Sports /> </Col>
-                    <Col><h2>Subscribe for updates</h2></Col>
+                    <Col> <Subscribe /> </Col>
                 </Row>
             </Container>
         </Jumbotron>

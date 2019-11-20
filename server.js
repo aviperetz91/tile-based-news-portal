@@ -1,17 +1,23 @@
 require("dotenv").config();
 const express = require("express");
-const app = express();
 const http = require('http');
 const socketIo = require('socket.io');
-
-// Import functions from controller
-const { getNewsAndEmit, getWeatherAndEmit, getFinanceAndEmit, getSportsAndEmit } = require('./controllers');
+const bodyParser = require('body-parser');
 
 // Import index route
 const index = require('./routes');
 
+// Import functions from controller
+const { getNewsAndEmit, getWeatherAndEmit, getFinanceAndEmit, getSportsAndEmit } = require('./controllers');
+
+const app = express();
+
+// Body parser middleware
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+
 // Use route
-app.use(index);
+app.use('/api', index);
 
 // Server instance
 const server = http.createServer(app);
