@@ -8,7 +8,8 @@ const validateEmail = require('../validation/email');
 // @desc    Test route
 // @access  Public
 router.get('/', (req, res) => {
-    return res.json({ response: ` '/' WORK ` });
+    console.log('SESSION', req.session);
+    return res.json({ response: req.session });
 })
 
 // @route   GET api/subscribe
@@ -22,7 +23,12 @@ router.post('/subscribe', (req, res) => {
         return res.status(400).json(errors);
     }
 
-    return res.json({ response: req.body.email });
+    if(!req.session.email){
+        req.session.email = req.body.email;
+        req.session.save();
+    }
+    console.log('INTO',req.session)
+    return res.json({session: req.session});
 })
 
 module.exports = router;

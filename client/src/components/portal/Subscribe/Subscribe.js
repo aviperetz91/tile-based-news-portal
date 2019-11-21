@@ -6,17 +6,46 @@ import axios from 'axios';
 class Subscribe extends Component {
 
     state = {
-        email: ''
+        email: '',
+        session: null
+    }
+
+    componentDidMount() {
+        this.getSession();
+    }
+
+    getSession = ()=>{
+        axios.get('http://localhost:4000/api')
+        .then(response => console.log(response.data))
+        .catch(err => console.log(err))
     }
 
     submitHandler = (event) => {
         event.preventDefault();
         axios.post('http://localhost:4000/api/subscribe',{ email:this.state.email })
-        .then(response => console.log(response.data))
+        .then(response => {
+            console.log(response.data);
+            this.setState({ session: response.data.session.email })
+        })
         .catch(err => console.log(err))
     }
 
     render() {
+
+        let subscribe = 
+            <Button
+                variant="success" 
+                type="submit"
+                onClick={ this.submitHandler }
+            >
+            Submit
+            </Button>
+
+        if(this.state.session) {
+            subscribe = 
+                <h4> Thank you for subscriebed </h4>
+        }
+
         return (
             <Card onClick={ this.showModalHandler }>
                 <Card.Body>
@@ -34,13 +63,7 @@ class Subscribe extends Component {
                             </Form.Text>
                         </Form.Group>
                         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                            <Button
-                                variant="success" 
-                                type="submit"
-                                onClick={ this.submitHandler }
-                            >
-                                Submit
-                            </Button>
+                            { subscribe }
                         </div>
                     </Form>
                 </Card.Body>

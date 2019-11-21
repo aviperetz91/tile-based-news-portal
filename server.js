@@ -4,6 +4,8 @@ const app = express();
 const http = require('http');
 const socketIo = require('socket.io');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
 const cors = require('cors');
 
 // Import route
@@ -20,6 +22,16 @@ const {
 // Body parser middleware
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+
+// Cookie parser middleware
+app.use(cookieParser());
+
+app.use(session({
+    resave: true, 
+    saveUninitialized: true, 
+    secret: process.env.SESSION_SECRET , 
+    cookie: { maxAge: 60000000 }
+}));
 
 // Allow only origin http://localhost:3000 access the server
 const corsOptions = {
@@ -38,10 +50,10 @@ const io = socketIo(server);
 // The callback will be execute after every connection event
 io.on("connection", socket => {
     console.log("New client connected");
-    getNewsAndEmit(socket);
-    getWeatherAndEmit(socket);
-    getFinanceAndEmit(socket);
-    getSportsAndEmit(socket);
+    // getNewsAndEmit(socket);
+    // getWeatherAndEmit(socket);
+    // getFinanceAndEmit(socket);
+    // getSportsAndEmit(socket);
     // setTimeout(() => getNewsAndEmit(socket), 1000);
     // setTimeout(() => getWeatherAndEmit(socket), 2000); 
     // setTimeout(() => getFinanceAndEmit(socket), 3000);
