@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react';
 import { Spinner, Card, Modal, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
+import styles from './style';
+
 class News extends Component {
 
     state = {
@@ -21,7 +23,7 @@ class News extends Component {
         const newsObj = this.props.newsObj;
 
         let content =
-            <div style={{textAlign: 'center'}}> 
+            <div style={ styles.spinnerContainer }> 
                 <Spinner animation="border" variant="secondary" /> 
             </div>
         
@@ -31,17 +33,20 @@ class News extends Component {
             content = 
                 <div>
                     <div>
-                        <Card.Subtitle className="mb-2 text-muted">{ newsObj.articles[0].source.name }</Card.Subtitle>
+                        <Card.Subtitle className="mb-2 text-muted" >
+                            { newsObj.articles[0].source.name }
+                        </Card.Subtitle>
                         <div>
                             { newsObj.articles[0].title }
                         </div>
                     </div>
-                    <br/>
-                    <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-end' }}> 
-                        <Card.Subtitle className="mb-2 text-muted" style={{fontStyle: 'italic'}}>
-                        Author: { newsObj.articles[0].author ? 
-                                newsObj.articles[0].author :
-                                ' Prefers to remain anonymous' }
+                    <div style={ styles.authorContainer }> 
+                        <Card.Subtitle className="mb-2 text-muted" style={ styles.subTitle } >
+                            <p style={ styles.author }>
+                            Author: { newsObj.articles[0].author ? 
+                                    newsObj.articles[0].author :
+                                    ' Prefers to remain anonymous' }
+                            </p>
                         </Card.Subtitle>
                     </div>
                 </div>
@@ -58,7 +63,7 @@ class News extends Component {
                         } 
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={ this.closeModalHandler }>
+                        <Button variant="primary" onClick={ this.closeModalHandler }>
                             Close
                         </Button>
                     </Modal.Footer>
@@ -67,7 +72,7 @@ class News extends Component {
 
         return(
             <Fragment>
-                <Card onClick={ this.showModalHandler }>
+                <Card style={ styles.container } onClick={ this.showModalHandler }>
                     <Card.Body>
                         <Card.Title>News update</Card.Title>
                         { content }

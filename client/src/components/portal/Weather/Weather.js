@@ -3,6 +3,8 @@ import { Spinner, Card, Modal, Button, Container, Row, Col } from 'react-bootstr
 import { connect } from 'react-redux';
 import Skycons from 'react-skycons';
 
+import styles from './style';
+
 class Weather extends Component {
 
     state = {
@@ -27,7 +29,7 @@ class Weather extends Component {
         const weatherObj = this.props.weatherObj;
 
         let content = 
-            <div style={{ textAlign: 'center'}}> 
+            <div style={styles.spinnerContainer}> 
                 <Spinner animation="border" variant="secondary" />
             </div>
 
@@ -37,10 +39,10 @@ class Weather extends Component {
         if(weatherObj) {
             content = 
                 <div>
-                    <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
-                        <div>
-                            <h2> { weatherObj.currently.temperature } °F </h2>
-                            <h2> { weatherObj.timezone } </h2>
+                    <div style={ styles.contentContainer }>
+                        <div style={ styles.forecast }>
+                            <h1 style={ styles.degrees }> { weatherObj.currently.temperature } <span style={styles.fahrenheit}>°F</span> </h1>
+                            <h2 style={ styles.timezone }> { weatherObj.timezone } </h2>
                         </div>
                         <div>
                             <Skycons 
@@ -49,10 +51,11 @@ class Weather extends Component {
                                 icon={ this.setIcons(weatherObj.hourly.data[0].icon) }
                                 autoplay={ true }
                             />
+                            <h5 style={ styles.description }>{ weatherObj.currently.summary }</h5>                          
                         </div>
                     </div>
-                    <div style={{ fontStyle: 'oblique' }}>
-                        ** { weatherObj.hourly.summary }
+                    <div style={styles.summary}>
+                        * { weatherObj.hourly.summary }
                     </div>
                 </div>
 
@@ -67,7 +70,7 @@ class Weather extends Component {
                             />
                         </div>
                         <div>
-                            <p style={{ fontSize: 12, fontWeight: 'bold', textAlign: 'center' }}> { day.temperatureMin } °F - { day.temperatureMax } °F </p>
+                            <p style={ styles.minToMaxTemp }> { day.temperatureMin } °F - { day.temperatureMax } °F </p>
                         </div>
                     </Col>
                 )
@@ -75,7 +78,7 @@ class Weather extends Component {
 
             modal = 
                 <Modal centered show={this.state.showModal} onHide={this.closeModalHandler} size='xl'>
-                    <Modal.Header closeButton style={{ display: 'flex', justifyContent: 'center' }}>
+                    <Modal.Header closeButton style={ styles.modal }>
                         <Modal.Title>Weather</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
@@ -98,7 +101,7 @@ class Weather extends Component {
                         </Container>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={this.closeModalHandler}>
+                        <Button variant="warning" onClick={this.closeModalHandler} style={ styles.button }>
                             Close
                         </Button>
                     </Modal.Footer>
@@ -107,7 +110,7 @@ class Weather extends Component {
         
         return(
             <Fragment>
-                <Card onClick={ this.showModalHandler }>
+                <Card style={ styles.container } onClick={ this.showModalHandler }>
                     <Card.Body >
                         <Card.Title>Weather</Card.Title>
                         { content }

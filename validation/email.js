@@ -24,8 +24,7 @@ const validateEmail = data => {
         errors.email = 'Email field is required';
     }
 
-    return {
-        // Returning object contain the errors obj AND isValid property for use in the route file
+    return {  // Returning object contain the errors obj AND isValid property for use in the route file
         errors,
         isValid: isEmpty(errors) 
     }

@@ -1,17 +1,21 @@
 require("dotenv").config();
 const express = require("express");
+const app = express();
 const http = require('http');
 const socketIo = require('socket.io');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-// Import index route
+// Import route
 const index = require('./routes');
 
-// Import functions from controller
-const { getNewsAndEmit, getWeatherAndEmit, getFinanceAndEmit, getSportsAndEmit } = require('./controllers');
-
-const app = express();
+// Import functions
+const { 
+    getNewsAndEmit,
+    getWeatherAndEmit, 
+    getFinanceAndEmit, 
+    getSportsAndEmit 
+} = require('./controllers');
 
 // Body parser middleware
 app.use(bodyParser.urlencoded({extended: false}));
@@ -19,7 +23,7 @@ app.use(bodyParser.json());
 
 // Allow only origin http://localhost:3000 access the server
 const corsOptions = {
-    origin: '*',
+    origin: 'http://localhost:3000',
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 app.use(cors(corsOptions));
@@ -27,10 +31,8 @@ app.use(cors(corsOptions));
 // Use route
 app.use('/api', index);
     
-// Server instance
-const server = http.createServer(app);
-
 // Create socket using the instance of the server
+const server = http.createServer(app); 
 const io = socketIo(server);
 
 // The callback will be execute after every connection event
@@ -52,5 +54,3 @@ io.on("connection", socket => {
 const port = process.env.PORT || 4000;
 
 server.listen(port, () => console.log(`Server running on port ${port}`));
-
-

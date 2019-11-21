@@ -33,13 +33,15 @@ class Subscribe extends Component {
                             Please enter a valid email address (e.g. - username@gmail.com).
                             </Form.Text>
                         </Form.Group>
-                        <Button 
-                            variant="success" 
-                            type="submit"
-                            onClick={ this.submitHandler }
-                        >
-                            Submit
-                        </Button>
+                        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                            <Button
+                                variant="success" 
+                                type="submit"
+                                onClick={ this.submitHandler }
+                            >
+                                Submit
+                            </Button>
+                        </div>
                     </Form>
                 </Card.Body>
             </Card>

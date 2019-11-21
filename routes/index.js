@@ -4,7 +4,6 @@ const router = express.Router();
 // Load email validation
 const validateEmail = require('../validation/email');
 
-
 // @route   GET api/
 // @desc    Test route
 // @access  Public
